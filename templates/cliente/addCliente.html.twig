@@ -1,0 +1,33 @@
+{# templates/cliente/nuevo_cliente.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Añadir Cliente{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4">Añadir Cliente <i class="fa-solid fa-user fa-bounce"></i></h1>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form method="post" class="border p-4 bg-light">
+                    {{ form_start(formularioCliente) }}
+                    <div class="mb-3">
+                        {{ form_row(formularioCliente.nombre, {'attr': {'class': 'form-control', 'placeholder': 'Nombre'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(formularioCliente.apellidos, {'attr': {'class': 'form-control', 'placeholder': 'Apellidos'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(formularioCliente.telefono, {'attr': {'class': 'form-control', 'placeholder': 'Teléfono'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(formularioCliente.direccion, {'attr': {'class': 'form-control', 'placeholder': 'Dirección'}}) }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button class="btn btn-secondary"><a class="text-white text-decoration-none" href="{{ path('verTodosClientes') }}">Cancelar</a></button>
+                    {{ form_end(formularioCliente) }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

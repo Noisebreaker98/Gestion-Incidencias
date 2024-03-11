@@ -1,0 +1,35 @@
+{# templates/cliente/nuevo_cliente.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Añadir Incidencia{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4">Añadir Incidencia <i class="fa-solid fa-wrench fa-shake"></i></h1>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form method="post" class="border p-4 bg-light">
+                    {{ form_start(formularioIncidencia) }}
+                    <div class="mb-3">
+                        {{ form_row(formularioIncidencia.titulo, {'attr': {'class': 'form-control', 'placeholder': 'Título'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(formularioIncidencia.fechaCreacion, {'attr': {'class': 'form-control', 'readonly': true}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(formularioIncidencia.estado, {'attr': {'class': 'form-control', 'placeholder': 'Iniciada, en proceso, resuelta'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {# Campo de cliente como select #}
+                        {{ form_label(formularioIncidencia.cliente) }}
+                        {{ form_widget(formularioIncidencia.cliente, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button class="btn btn-secondary"><a class="text-white text-decoration-none" href="{{ path('verTodasIncidencias') }}">Cancelar</a></button>
+                    {{ form_end(formularioIncidencia) }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
