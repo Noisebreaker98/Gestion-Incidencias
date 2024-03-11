@@ -16,6 +16,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class IncidenciaController extends AbstractController
 {
     #[Route('/incidencias', name: 'verTodasIncidencias')]
+    #[IsGranted("ROLE_USER")]
     public function verTodasIncidencias(EntityManagerInterface $entityManager): Response
     {
         $incidencias = $entityManager->getRepository(Incidencia::class)->findBy([], ['fechaCreacion' => 'DESC']);
